@@ -1,6 +1,6 @@
-(ns postal.core-test
+(ns rfc5322.core.test
   (:require [clojure.test :refer :all]
-            [postal.core :refer :all]))
+            [rfc5322.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

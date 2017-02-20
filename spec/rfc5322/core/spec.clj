@@ -1,6 +1,6 @@
-(ns postal.core-spec
-  (:require [postal.core :refer :all])
-  (:use [speclj.core]))
+(ns rfc5322.core.spec
+  (:require [rfc5322.core :refer :all]
+            [speclj.core :refer :all]))
 
 (describe "The email address validator"
   (it "returns false when given an empty email address"

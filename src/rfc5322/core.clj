@@ -1,4 +1,4 @@
-(ns postal.core
+(ns rfc5322.core
   (:require [instaparse.core :as insta]))
 
 ;;;; This provides functions for parsing a string to determine if it is a valid
@@ -10,7 +10,7 @@
 
 (def email-parser
   (insta/parser
-    "src/postal/rfc5322.abnf"
+    "src/rfc5322/rfc5322.abnf"
     :input-format :abnf))
 
 ;; All tokens that begin with 'obs-' are considered obsolete in the spec
