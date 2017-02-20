@@ -3,8 +3,8 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [instaparse "1.2.3"]
-                 [speclj "2.7.4"]]
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [instaparse "1.4.5"]
+                 [speclj "3.3.2"]]
   :plugins [[speclj "2.7.4"]]
   :test-path "spec/")
