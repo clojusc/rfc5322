@@ -7,4 +7,18 @@
                  [instaparse "1.4.5"]
                  [speclj "3.3.2"]]
   :plugins [[speclj "2.7.4"]]
-  :test-path "spec/")
+  :test-path "spec/"
+  :repl-options {
+    :init-ns rfc5322.dev
+    :welcome (println
+               (str "\nTo demo the code, try the following:\n\n"
+                    "\t(demo-lite)\n"
+                    "\t(source demo-lite)\n"
+                    "\t(source lite)\n\n"
+                    "\t(demo-full)\n"
+                    "\t(source demo-full)\n"
+                    "\t(source full)\n"
+                    "\t(source ->map)\n"))}
+  :source-paths ["src" "dev-resources/src" "test"]
+  :profiles {
+    :uberjar {:aot :all}})
