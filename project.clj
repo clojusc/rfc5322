@@ -6,8 +6,8 @@
     :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [
     [cpath-clj "0.1.2"]
-    [org.clojure/clojure "1.8.0"]
     [instaparse "1.4.5"]
+    [org.clojure/clojure "1.8.0"]
     [speclj "3.3.2"]]
   :plugins [[speclj "2.7.4"]]
   :test-path "spec/"
