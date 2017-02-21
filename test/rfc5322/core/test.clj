@@ -3,14 +3,21 @@
             [rfc5322.core :as rfc5322]))
 
 (def msg-1
-"From: John Doe <jdoe@machine.example>
-To: Mary Smith <mary@example.net>
-Subject: Saying Hello
+"From: Alice <alice@example.com>
+To: Bob <bob@example.com>
+Subject: Security
 Date: Fri, 21 Nov 1997 09:55:06 -0600
-Message-ID: <1234@local.machine.example>
+Message-ID: <a1b2c3d4@smtp.example.com>
 
-This is a message just to say hello.
-So, \"Hello\".")
+There may be a problem with your passwords. In
+particular, your consistent use of the same one
+over the course of many years. Somewhat worrying
+is the fact that 'secret' is fairly easy to guess
+(and no, 'sekrit' isn't any better). However,
+what I find most troubling is that this password
+has been published in countless online security
+documents and open source software. I suspect
+a leak.")
 
 (deftest rfc5322-parse
   (is (= (first (rfc5322/parse msg-1))
