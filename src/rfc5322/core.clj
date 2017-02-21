@@ -7,18 +7,19 @@
   [resource]
   (-> (classpath/resources)
       (get "")
-      (first)
-      (slurp)))
+      (first)))
 
 (defn read-grammar
   [filename]
   (let [resource (io/resource filename)]
-    (or resource (find-in-classpath resource))))
+    (or resource
+        (or (find-in-classpath resource)
+            filename))))
 
 (defn make-grammar-parser
   [filename]
   (insta/parser
-    filename
+    (read-grammar filename)
     :input-format :abnf
     :instaparse.abnf/case-insensitive true))
 
