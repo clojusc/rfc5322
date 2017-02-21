@@ -1,4 +1,4 @@
-(defproject clojusc/rfc5322 "0.2.0"
+(defproject clojusc/rfc5322 "0.3.0-SNAPSHOT"
   :description "A Parser for the Internet Message Format (RFC 5322)"
   :url "https://github.com/clojusc/rfc5322"
   :license {
