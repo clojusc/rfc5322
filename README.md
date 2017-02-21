@@ -7,6 +7,8 @@
 [![JDK version][jdk-v]](.travis.yml)
 [![Clojure version][clojure-v]](project.clj)
 
+[![][logo]][logo-large]
+
 *A Parser for the Internet Message Format (RFC 5322)*
 
 
