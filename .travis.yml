@@ -1,7 +1,7 @@
 language: clojure
 script:
   - lein deps
-  - lein build
+  - lein compile
   - lein uberjar
 jdk:
   - oraclejdk8
