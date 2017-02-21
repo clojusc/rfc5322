@@ -15,11 +15,11 @@
 
 (defn make-full-parser
   []
-  (make-grammar-parser "resources/rfc5322.abnf"))
+  (make-grammar-parser "rfc5322.abnf"))
 
 (defn make-lite-parser
   []
-  (make-grammar-parser "resources/rfc5322-no-obselete.abnf"))
+  (make-grammar-parser "rfc5322-no-obselete.abnf"))
 
 (defn obsolete
   [key]
