@@ -1,0 +1,12 @@
+language: clojure
+script:
+  - lein deps
+  - lein build
+  - lein uberjar
+jdk:
+  - oraclejdk8
+  - oraclejdk7
+  - openjdk7
+notifications:
+  email:
+      - oubiwann@gmail.com
