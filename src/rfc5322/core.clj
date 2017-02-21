@@ -5,9 +5,10 @@
 
 (defn find-in-classpath
   [resource]
-  (-> (cp/resources)
+  (-> (classpath/resources)
       (get "")
-      (first)))
+      (first)
+      (slurp)))
 
 (defn read-grammar
   [filename]
