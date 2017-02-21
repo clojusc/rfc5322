@@ -1,10 +1,18 @@
 (ns rfc5322.core
-  (:require [clojure.java.io :as io]
+  (:require [cpath-clj.core :as classpath]
+            [clojure.java.io :as io]
             [instaparse.core :as insta]))
+
+(defn find-in-classpath
+  [resource]
+  (-> (cp/resources)
+      (get "")
+      (first)))
 
 (defn read-grammar
   [filename]
-  (io/resource filename))
+  (let [resource (io/resource filename)]
+    (or resource (find-in-classpath resource))))
 
 (defn make-grammar-parser
   [filename]
