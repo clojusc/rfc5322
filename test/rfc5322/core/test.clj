@@ -17,5 +17,5 @@ So, \"Hello\".")
          :message)))
 
 (deftest rfc5322-parse-no-obselete
-  (is (= (first (rfc5322/parse msg-1 rfc5322/grammar-parser-no-obselete))
+  (is (= (first (rfc5322/parse msg-1 (rfc5322/make-lite-parser)))
          :message)))
