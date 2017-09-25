@@ -24,4 +24,37 @@
                     "\t(source ->map)\n"))}
   :source-paths ["src" "dev-resources/src" "test"]
   :profiles {
-    :uberjar {:aot :all}})
+    :uberjar {
+      :aot :all}
+    :test {
+      :exclusions [org.clojure/clojure]
+      :plugins [
+        [jonase/eastwood "0.2.4"]
+        [lein-kibit "0.1.5"]
+        [lein-ancient "0.6.12"]]}
+    :dev {
+      :source-paths ["dev-resources/src"]
+      :repl-options {
+        :init-ns trifl.dev}
+      :dependencies [
+        [org.clojure/tools.namespace "0.2.11"
+         :exclusions [org.clojure/clojure]]]}}
+  :aliases {
+    "check-deps" [
+      "with-profile" "+test" "ancient" "check" ":all"]
+    "kibit" [
+      "with-profile" "+test" "do"
+        ["shell" "echo" "== Kibit =="]
+        ["kibit"]]
+    "outlaw" [
+      "with-profile" "+test"
+      "eastwood" "{:namespaces [:source-paths] :source-paths [\"src\"]}"]
+    "lint" [
+      "with-profile" "+test" "do"
+        ["check"] ["kibit"] ["outlaw"]]
+    "build" ["with-profile" "+test" "do"
+      ["check-deps"]
+      ["lint"]
+      ["test"]
+      ["compile"]
+      ["uberjar"]]})
