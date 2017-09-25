@@ -6,10 +6,10 @@
     :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [
     [cpath-clj "0.1.2"]
-    [instaparse "1.4.5"]
+    [instaparse "1.4.8"]
     [org.clojure/clojure "1.8.0"]
     [speclj "3.3.2"]]
-  :plugins [[speclj "2.7.4"]]
+  :plugins [[speclj "3.3.2"]]
   :test-path "spec/"
   :repl-options {
     :init-ns rfc5322.dev
