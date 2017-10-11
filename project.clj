@@ -27,6 +27,12 @@
   :profiles {
     :ubercompile {
       :aot :all}
+    :dev {
+      :source-paths ["dev-resources/src"]
+      :repl-options {
+        :init-ns trifl.dev}
+      :dependencies [
+        [org.clojure/tools.namespace "0.2.11"]]}
     :test {
       :plugins [
          [jonase/eastwood "0.2.4"]
