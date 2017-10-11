@@ -7,10 +7,10 @@
   :excludsions [org.clojure/clojure]
   :dependencies [
     [cpath-clj "0.1.2"]
-    [instaparse "1.4.5"]
+    [instaparse "1.4.8"]
     [org.clojure/clojure "1.8.0"]
     [speclj "3.3.2"]]
-  :plugins [[speclj "2.7.4"]]
+  :plugins [[speclj "3.3.2"]]
   :test-path "spec/"
   :repl-options {
     :init-ns rfc5322.dev
@@ -29,14 +29,14 @@
       :aot :all}
     :test {
       :plugins [
-         [jonase/eastwood "0.2.3"]
-         [lein-ancient "0.6.10"]
+         [jonase/eastwood "0.2.4"]
+         [lein-ancient "0.6.12"]
          [lein-bikeshed "0.4.1"]
-         [lein-kibit "0.1.2"]
+         [lein-kibit "0.1.5"]
          [venantius/yagni "0.1.4"]]}
     :docs {
-      :dependencies [[codox-theme-rdash "0.1.1"]]
-      :plugins [[lein-codox "0.10.1"]
+      :dependencies [[codox-theme-rdash "0.1.2"]]
+      :plugins [[lein-codox "0.10.3"]
                 [lein-simpleton "1.3.0"]]
       :codox {
         :project {
@@ -62,6 +62,8 @@
     "lint" [
       "with-profile" "+test" "do"
         ["check"] ["kibit"] ["outlaw"]]
+    "docs" [
+       "with-profile" "+docs" "codox"]
     "build" ["with-profile" "+test" "do"
       ["check-deps"]
       ;["lint"]
