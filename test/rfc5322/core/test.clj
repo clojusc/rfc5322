@@ -22,8 +22,10 @@ a leak.")
 
 (deftest rfc5322-parse
   (is (= (first (parser/parse msg-1))
+         :message))
+  (is (= (first (parser/parse msg-1 :full))
          :message)))
 
 (deftest rfc5322-parse-no-obselete
-  (is (= (first (parser/parse msg-1 (parser/make-lite-parser)))
+  (is (= (first (parser/parse msg-1 :lite))
          :message)))
