@@ -13,11 +13,13 @@
   (str "\nTo demo the code, try the following:\n\n"
        "\t(demo-lite)\n"
        "\t(source demo-lite)\n"
-       "\t(source lite)\n\n"
+       "\t(source parsed-lite)\n"
+       "\tparsed-lite\n\n"
        "\t(demo-full)\n"
        "\t(source demo-full)\n"
-       "\t(source full)\n"
-       "\t(source ->map)\n"))
+       "\t(source parsed-full)\n"
+       "\tparsed-full\n\n"
+       "\t(test-message)\n"))
 
 (defn get-prompt
   [ns]

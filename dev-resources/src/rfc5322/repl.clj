@@ -9,17 +9,24 @@
     [rfc5322.core.test :as test]
     [rfc5322.core :as core]
     [rfc5322.parser :as parser]
+    [rfc5322.xform :as xform]
     [trifl.java :refer [show-methods]]))
 
-(def lite (instaparse/parse (parser/make-lite-parser) test/msg-1))
-(def full (instaparse/parse (parser/make-full-parser) test/msg-1))
+(def parsed-lite (parser/parse test/msg-1 :lite))
+(def parsed-full (parser/parse test/msg-1 :full))
 
 (defn demo-lite
   []
-  (pprint
-    (core/->map lite)))
+  (-> test/msg-1
+      (core/convert :lite)
+      pprint))
 
 (defn demo-full
   []
-  (pprint
-    (core/->map full)))
+  (-> test/msg-1
+      (core/convert :full)
+      pprint))
+
+(defn test-message
+  []
+  (println test/msg-1))
