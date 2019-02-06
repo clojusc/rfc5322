@@ -52,6 +52,10 @@
       :dependencies [
         [clojusc/trifl "0.4.2"]
         [org.clojure/tools.namespace "0.2.11"]]}
+    :lint {
+      :plugins [
+        [jonase/eastwood "0.3.5"]
+        [lein-kibit "0.1.6"]]}
     :test {
       :dependencies [
         [clojusc/ltest "0.4.0-SNAPSHOT"]]
