@@ -1,47 +1,65 @@
 (ns rfc5322.core
-  (:require [cpath-clj.core :as classpath]
-            [clojure.java.io :as io]
-            [instaparse.core :as insta]))
+  (:require
+    [clojure.java.io :as io]
+    [clojure.string :as string]
+    [instaparse.core :as instaparse]
+    [rfc5322.core :as core]
+    [rfc5322.parser :as parser]))
 
-(defn find-in-classpath
-  [resource]
-  (-> (classpath/resources)
-      (get "")
-      (first)))
+(defn ->str-data
+  [key & strs]
+  {key (reduce str strs)})
 
-(defn read-grammar
-  [filename]
-  (let [resource (io/resource filename)]
-    (or resource
-        (or (find-in-classpath resource)
-            filename))))
+(defn get-name
+  [xs]
+  (->> xs
+       (map :name)
+       (remove nil?)
+       (first)
+       (string/lower-case)
+       (keyword)))
 
-(defn make-grammar-parser
-  [filename]
-  (insta/parser
-    (read-grammar filename)
-    :input-format :abnf
-    :instaparse.abnf/case-insensitive true))
+(defn get-value
+  [xs]
+  (->> xs
+       (map :value)
+       (remove nil?)
+       (first)
+       (string/trim)))
 
-(defn make-full-parser
-  []
-  (make-grammar-parser "rfc5322.abnf"))
+(defn pairs->map
+  [& xs]
+  {(get-name xs) (get-value xs)})
 
-(defn make-lite-parser
-  []
-  (make-grammar-parser "rfc5322-no-obselete.abnf"))
+(defn merge-fields
+  [& xs]
+  (->> xs
+       (filter map?)
+       (reduce merge)))
 
-(defn obsolete
-  [key]
-  (when (keyword? key)
-    (re-find #"^obs\-" (name key))))
+(defn ->map
+  "Transform data in RFC 5322 internet message format to a map.
 
-(defn parse
-  "Parses a string and returns the simplified parse tree if it is a valid email
-  and nil otherwise. Because RFC 5322 is ambiguous, the returned parse tree
-  is the one with the least number of obsolete tokens."
-  ([msg]
-    (parse msg (make-full-parser)))
-  ([msg parser]
-    (insta/parse parser msg)))
-
+  Note that this is by no means definitive or complete!"
+  [xs]
+  (instaparse/transform
+    {:LF str
+     :line-feeds str
+     :text str
+     :VCHAR str
+     :WSP str
+     :FWS str
+     :ftext str
+     :obs-utext str
+     :obs-FWS str
+     :obs-body str
+     :obs-unstruct str
+     :body (partial ->str-data :body)
+     :field-name (partial ->str-data :name)
+     :unstructured (partial ->str-data :value)
+     :obs-optional pairs->map
+     :optional-field pairs->map
+     :obs-fields merge-fields
+     :fields merge-fields
+     :message merge-fields}
+    xs))
