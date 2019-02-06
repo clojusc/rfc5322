@@ -1,4 +1,4 @@
-(ns rfc5322.dev
+(ns rfc5322.repl
   "Development namespace"
   (:require [clojure.edn :as edn]
             [clojure.java.io :as io]
@@ -8,16 +8,8 @@
             [clojure.walk :refer [macroexpand-all]]
             [instaparse.core :as instaparse]
             [rfc5322.core.test :as test]
-            [rfc5322.core :as rfc]))
-
-(defn show-methods
-  ""
-  [obj]
-  (print-table
-    (sort-by :name
-      (filter (fn [x]
-                (contains? (:flags x) :public))
-              (:members (reflect obj))))))
+            [rfc5322.core :as rfc]
+            [trifl.java :refer [show-methods]]))
 
 (defn ->str-data
   [key & strs]
