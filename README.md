@@ -21,23 +21,24 @@ $ lein repl
 ```
 
 ```clj
-nREPL server started on port 46050 on host 127.0.0.1 - nrepl://127.0.0.1:46050
-REPL-y 0.3.7, nREPL 0.2.12
-Clojure 1.8.0
-OpenJDK 64-Bit Server VM 1.8.0_121-8u121-b13-0ubuntu1.16.04.2-b13
 
 To demo the code, try the following:
 
-    (demo-lite)
-    (source demo-lite)
-    (source lite)
+	(demo-lite)
+	(source demo-lite)
+	(source parsed-lite)
+	parsed-lite
 
-    (demo-full)
-    (source demo-full)
-    (source full)
-    (source ->map)
+	(demo-full)
+	(source demo-full)
+	(source parsed-full)
+	parsed-full
 
-rfc5322.dev=>
+	(test-message)
+
+...
+
+[rfc5322.repl] λ=>
 ```
 
 Try those out, then look at the source code in the following
@@ -46,6 +47,7 @@ locations:
 * `dev-resources/src/rfc5322/repl.clj`
 * `src/rfc5322/core.clj`
 * `src/rfc5322/parser.clj`
+* `src/rfc5322/xform.clj`
 
 The test message used in `repl.clj` is here:
 

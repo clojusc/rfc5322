@@ -19,7 +19,7 @@
        "\t(source demo-full)\n"
        "\t(source parsed-full)\n"
        "\tparsed-full\n\n"
-       "\t(test-message)\n"))
+       "\t(test-message)\n\n"))
 
 (defn get-prompt
   [ns]
