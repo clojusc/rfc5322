@@ -33,22 +33,17 @@
     :url "http://www.eclipse.org/legal/epl-v10.html"}
   :excludsions [org.clojure/clojure]
   :dependencies [
-    [cpath-clj "0.1.2"]
     [instaparse "1.4.10"]
     [org.clojure/clojure "1.10.0"]
     [speclj "3.3.2"]]
   :plugins [[speclj "3.3.2"]]
   :test-path "spec/"
-  :repl-options {
-    :init-ns rfc5322.dev
-    }
   :source-paths ["src" "dev-resources/src" "test"]
   :profiles {
     :ubercompile {
       :aot :all}
     :custom-repl {
       :repl-options {
-        :source-paths ["dev-resources/src"]
         :init-ns rfc5322.repl
         :prompt ~get-prompt
         :init ~(println (get-banner))
@@ -58,10 +53,13 @@
         [clojusc/trifl "0.4.2"]
         [org.clojure/tools.namespace "0.2.11"]]}
     :test {
+      :dependencies [
+        [clojusc/ltest "0.4.0-SNAPSHOT"]]
       :plugins [
-         [jonase/eastwood "0.3.5"]
-         [lein-ancient "0.6.15"]
-         [lein-kibit "0.1.6"]]}
+        [lein-ancient "0.6.15"]
+        [lein-ltest "0.4.0-SNAPSHOT"]]
+      :test-selectors {
+        :select :select}}
     :docs {
       :dependencies [
         [codox-theme-rdash "0.1.2"]]

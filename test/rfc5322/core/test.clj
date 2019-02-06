@@ -1,6 +1,7 @@
 (ns rfc5322.core.test
-  (:require [clojure.test :refer :all]
-            [rfc5322.core :as rfc5322]))
+  (:require
+  	[clojure.test :refer :all]
+    [rfc5322.parser :as parser]))
 
 (def msg-1
 "From: Alice <alice@example.com>
@@ -20,9 +21,9 @@ documents and open source software. I suspect
 a leak.")
 
 (deftest rfc5322-parse
-  (is (= (first (rfc5322/parse msg-1))
+  (is (= (first (parser/parse msg-1))
          :message)))
 
 (deftest rfc5322-parse-no-obselete
-  (is (= (first (rfc5322/parse msg-1 (rfc5322/make-lite-parser)))
+  (is (= (first (parser/parse msg-1 (parser/make-lite-parser)))
          :message)))
