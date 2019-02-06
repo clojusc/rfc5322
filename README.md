@@ -43,10 +43,11 @@ rfc5322.dev=>
 Try those out, then look at the source code in the following
 locations:
 
-* `dev-resources/src/rfc5322/dev.clj`
+* `dev-resources/src/rfc5322/repl.clj`
 * `src/rfc5322/core.clj`
+* `src/rfc5322/parser.clj`
 
-The test message used in `dev.clj` is here:
+The test message used in `repl.clj` is here:
 
 * `test/rfc5322/core/test.clj`
 
@@ -55,7 +56,7 @@ The test message used in `dev.clj` is here:
 
 Copyright © 2013, Zachary Kuhn
 
-Copyright © 2017, Clojure-Aided Enrichment Center
+Copyright © 2017-2019, Clojure-Aided Enrichment Center
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
@@ -71,7 +72,7 @@ your option) any later version.
 [logo-large]: resources/images/logo-large.png
 [tag-badge]: https://img.shields.io/github/tag/clojusc/rfc5322.svg
 [tag]: https://github.com/clojusc/rfc5322/tags
-[clojure-v]: https://img.shields.io/badge/clojure-1.8.0-blue.svg
-[jdk-v]: https://img.shields.io/badge/jdk-1.7+-blue.svg
+[clojure-v]: https://img.shields.io/badge/clojure-1.10.0-blue.svg
+[jdk-v]: https://img.shields.io/badge/jdk-1.8+-blue.svg
 [clojars]: https://clojars.org/clojusc/rfc5322
 [clojars-badge]: https://img.shields.io/clojars/v/clojusc/rfc5322.svg
