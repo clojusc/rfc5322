@@ -1,7 +1,4 @@
-(ns rfc5322.core.test
-  (:require
-  	[clojure.test :refer :all]
-    [rfc5322.parser :as parser]))
+(ns rfc5322.tests.data)
 
 (def msg-1
 "From: Alice <alice@example.com>
@@ -19,13 +16,3 @@ what I find most troubling is that this password
 has been published in countless online security
 documents and open source software. I suspect
 a leak.")
-
-(deftest rfc5322-parse
-  (is (= (first (parser/parse msg-1))
-         :message))
-  (is (= (first (parser/parse msg-1 :full))
-         :message)))
-
-(deftest rfc5322-parse-no-obselete
-  (is (= (first (parser/parse msg-1 :lite))
-         :message)))

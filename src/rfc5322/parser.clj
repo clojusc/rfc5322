@@ -1,7 +1,8 @@
 (ns rfc5322.parser
   (:require
     [clojure.java.io :as io]
-    [instaparse.core :as instaparse]))
+    [instaparse.core :as instaparse]
+    [taoensso.timbre :as log]))
 
 (defn read-grammar
   [filename]
@@ -32,5 +33,7 @@
   ([message-text]
     (parse message-text :full))
   ([message-text mode]
+    (log/debugf "Parsing message \n%s\nUsing %s mode ..."
+                message-text
+                mode)
     (instaparse/parse (make-parser mode) message-text)))
-

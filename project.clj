@@ -35,10 +35,9 @@
     :url "http://www.eclipse.org/legal/epl-v10.html"}
   :excludsions [org.clojure/clojure]
   :dependencies [
+    [com.taoensso/timbre "4.10.0"]
     [instaparse "1.4.10"]
-    [org.clojure/clojure "1.10.0"]
-    [speclj "3.3.2"]]
-  :plugins [[speclj "3.3.2"]]
+    [org.clojure/clojure "1.10.0"]]
   :test-path "spec/"
   :source-paths ["src" "dev-resources/src" "test"]
   :profiles {
@@ -53,14 +52,17 @@
     :dev {
       :dependencies [
         [clojusc/trifl "0.4.2"]
-        [org.clojure/tools.namespace "0.2.11"]]}
+        [org.clojure/tools.namespace "0.2.11"]]
+      :plugins [
+        [lein-shell "0.5.0"]]}
     :lint {
       :plugins [
         [jonase/eastwood "0.3.5"]
         [lein-kibit "0.1.6"]]}
     :test {
       :dependencies [
-        [clojusc/ltest "0.4.0-SNAPSHOT"]]
+        [clojusc/ltest "0.4.0-SNAPSHOT"]
+        [environ "1.1.0"]]
       :plugins [
         [lein-ancient "0.6.15"]
         [lein-ltest "0.4.0-SNAPSHOT"]]
