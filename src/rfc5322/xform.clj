@@ -1,9 +1,8 @@
 (ns rfc5322.xform
   (:require
-    [clojure.java.io :as io]
     [clojure.string :as string]
     [instaparse.core :as instaparse]
-    [rfc5322.parser :as parser]))
+    [taoensso.timbre :as log]))
 
 (defn ->str-data
   [key & strs]
@@ -37,10 +36,12 @@
        (reduce merge)))
 
 (defn ->map
-  "Transform data in RFC 5322 internet message format to a map.
+  "Transform data parsed from an RFC 5322 internet message to a map.
 
   Note that this is by no means definitive or complete!"
   [xs]
+  (log/tracef "Preparing to convert the following to a map:\n"
+              xs)
   (instaparse/transform
     {:LF str
      :line-feeds str

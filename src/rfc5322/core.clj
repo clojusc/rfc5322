@@ -3,7 +3,13 @@
     [instaparse.core :as instaparse]
     [rfc5322.xform :as xform]
     [rfc5322.parser :as parser]
+    [taoensso.timbre :as log]
     [trifl.java :refer [show-methods]]))
+
+(defn log-and-passthrough
+  [x level msg]
+  (log/log! level :p [msg])
+  x)
 
 (defn convert
   "Given an RFC 5322 formatted message, parse it and convert it to a Clojure
@@ -13,4 +19,6 @@
   ([message-text mode]
     (-> message-text
         (parser/parse mode)
-        (xform/->map))))
+        (log-and-passthrough :trace "Got parsed data: ")
+        (xform/->map)
+        (log-and-passthrough :trace "Got mapped data: "))))
