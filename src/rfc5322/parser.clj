@@ -3,6 +3,8 @@
     [clojure.java.io :as io]
     [instaparse.core :as instaparse]
     [taoensso.timbre :as log])
+  (:import
+    (rfc5322.exception ParserException))
   (:refer-clojure :exclude [parse]))
 
 (defn read-grammar
@@ -37,4 +39,7 @@
     (log/debugf "Parsing message \n%s\nUsing %s mode ..."
                 message-text
                 mode)
-    (instaparse/parse (make-parser mode) message-text)))
+    (let [result (instaparse/parse (make-parser mode) message-text)]
+      (if (instaparse/failure? result)
+        (throw (new ParserException "Parse failure" (instaparse/get-failure result)))
+        result))))
