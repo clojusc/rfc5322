@@ -40,6 +40,7 @@
     [org.clojure/clojure "1.10.0"]]
   :test-path "spec/"
   :source-paths ["src" "dev-resources/src" "test"]
+  :aot [rfc5322.exception]
   :profiles {
     :ubercompile {
       :aot :all}
