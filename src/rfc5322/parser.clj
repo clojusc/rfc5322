@@ -2,7 +2,8 @@
   (:require
     [clojure.java.io :as io]
     [instaparse.core :as instaparse]
-    [taoensso.timbre :as log]))
+    [taoensso.timbre :as log])
+  (:refer-clojure :exclude [parse]))
 
 (defn read-grammar
   [filename]
