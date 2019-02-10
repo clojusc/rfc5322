@@ -8,7 +8,7 @@
 
 (defn log-and-passthrough
   [x level msg]
-  (log/log! level :p [msg])
+  (log/log level (str msg x))
   x)
 
 (defn convert
