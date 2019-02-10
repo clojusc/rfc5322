@@ -21,10 +21,10 @@
 (defn make-parser
   [mode]
   (case mode
-    :lite (make-grammar-parser "rfc5322-no-obselete.abnf")
-    :full (make-grammar-parser "rfc5322.abnf")
-    :utf8-lite (make-grammar-parser "rfc5322-no-obselete-utf8.abnf")
-    :utf8-full (make-grammar-parser "rfc5322-utf8.abnf")))
+    [:lite] (make-grammar-parser "rfc5322-no-obselete.abnf")
+    [:full] (make-grammar-parser "rfc5322.abnf")
+    [:lite :utf8] (make-grammar-parser "rfc5322-no-obselete-utf8.abnf")
+    [:full :utf8] (make-grammar-parser "rfc5322-utf8.abnf")))
 
 (defn obsolete
   [key]
@@ -35,13 +35,11 @@
   "Parses a string and returns the simplified parse tree if it is a valid email
   and nil otherwise. Because RFC 5322 is ambiguous, the returned parse tree
   is the one with the least number of obsolete tokens."
-  ([message-text]
-    (parse message-text :full))
-  ([message-text mode]
-    (log/debugf "Parsing message \n%s\nUsing %s mode ..."
-                message-text
-                mode)
-    (let [result (instaparse/parse (make-parser mode) message-text)]
-      (if (instaparse/failure? result)
-        (throw (new ParserException "Parse failure" (instaparse/get-failure result)))
-        result))))
+  [message-text mode]
+  (log/debugf "Parsing message \n%s\nUsing %s mode ..."
+              message-text
+              mode)
+  (let [result (instaparse/parse (make-parser mode) message-text)]
+    (if (instaparse/failure? result)
+      (throw (new ParserException "Parse failure" (instaparse/get-failure result)))
+      result)))

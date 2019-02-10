@@ -14,9 +14,8 @@
 (defn convert
   "Given an RFC 5322 formatted message, parse it and convert it to a Clojure
   hash-map."
-  ([message-text]
-    (convert message-text :full))
-  ([message-text mode]
+  [message-text & mode]
+  (let [mode (vec (or mode [:full]))]
     (-> message-text
         (parser/parse mode)
         (log-and-passthrough :trace "Got parsed data: ")

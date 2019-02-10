@@ -16,8 +16,8 @@
 (log/set-level! :warn)
 
 (def msg-1 (test-data/load "sample-1.rfc5322"))
-(def parsed-lite (parser/parse msg-1 :lite))
-(def parsed-full (parser/parse msg-1 :full))
+(def parsed-lite (parser/parse msg-1 [:lite]))
+(def parsed-full (parser/parse msg-1 [:full]))
 
 (defn demo-lite
   []
