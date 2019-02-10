@@ -30,3 +30,11 @@
 (deftest convert-message-line-too-long
 	(is (thrown? ParserException
 		     			 (core/convert (test-data/load "sample-3.rfc5322") :lite))))
+
+(deftest convert-utf8
+	(is (= 65
+		     (count
+		     	(:body
+		     		(core/convert (test-data/load "sample-4.rfc5322") :utf8-lite)))))
+	(is (thrown? ParserException
+		     			 (core/convert (test-data/load "sample-4.rfc5322") :lite))))
