@@ -22,7 +22,9 @@
   [mode]
   (case mode
     :lite (make-grammar-parser "rfc5322-no-obselete.abnf")
-    :full (make-grammar-parser "rfc5322.abnf")))
+    :full (make-grammar-parser "rfc5322.abnf")
+    :utf8-lite (make-grammar-parser "rfc5322-no-obselete-utf8.abnf")
+    :utf8-full (make-grammar-parser "rfc5322-utf8.abnf")))
 
 (defn obsolete
   [key]

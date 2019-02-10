@@ -29,3 +29,10 @@
 	(let [lite (parser/parse (test-data/load "sample-1.rfc5322") :lite)]
 	  (is (= :message (first lite)))
 	  (is (= 336 (count (flatten (second lite)))))))
+
+(deftest parse-utf8
+	(let [lite (parser/parse (test-data/load "sample-4.rfc5322") :utf8-lite)]
+	  (is (= :message (first lite)))
+	  (is (= 336 (count (flatten (second lite))))))
+	(is (thrown? ParserException
+		           (parser/parse (test-data/load "sample-4.rfc5322") :lite))))
