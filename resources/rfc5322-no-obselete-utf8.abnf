@@ -60,7 +60,7 @@ word            =   atom / quoted-string
 
 phrase          =   1*word
 
-unstructured    =   *([FWS] VCHAR) *WSP
+unstructured    =   *([FWS] text) *WSP
 
 date-time       =   [ day-of-week "," ] date time [CFWS]
 
