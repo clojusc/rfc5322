@@ -63,7 +63,7 @@ word            =   atom / quoted-string
 
 phrase          =   1*word / obs-phrase
 
-unstructured    =   (*([FWS] VCHAR) *WSP) / obs-unstruct
+unstructured    =   (*([FWS] text) *WSP) / obs-unstruct
 
 date-time       =   [ day-of-week "," ] date time [CFWS]
 

@@ -3,6 +3,7 @@ To: Bob <bob@example.com>
 Subject: Security
 Date: Fri, 21 Nov 1997 09:55:06 -0600
 Message-ID: <a1b2c3d4@smtp.example.com>
+Tags: lambda,λ
 
 Testing a UTF-8 message ...
 
