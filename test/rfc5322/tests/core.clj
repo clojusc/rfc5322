@@ -35,6 +35,6 @@
 	(is (= 65
 		     (count
 		     	(:body
-		     		(core/convert (test-data/load "sample-4.rfc5322") :utf8-lite)))))
+		     		(core/convert (test-data/load "sample-4.rfc5322") :lite :utf8)))))
 	(is (thrown? ParserException
 		     			 (core/convert (test-data/load "sample-4.rfc5322") :lite))))
