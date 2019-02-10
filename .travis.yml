@@ -7,6 +7,8 @@ jdk:
   - oraclejdk8
   - openjdk8
   - openjdk11
+env:
+  - LEIN_SNAPSHOTS_IN_RELEASE=true
 notifications:
   email:
       - oubiwann@gmail.com

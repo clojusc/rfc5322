@@ -27,7 +27,7 @@
        ns
        "\u001B[35m]\u001B[33m λ\u001B[m=> "))
 
-(defproject clojusc/rfc5322 "0.5.0-SNAPSHOT"
+(defproject clojusc/rfc5322 "0.5.0"
   :description "A Parser for the Internet Message Format (RFC 5322)"
   :url "https://github.com/clojusc/rfc5322"
   :license {
@@ -110,7 +110,7 @@
               "--file" "marginalia.html"
               "--name" "sockets"]]
     "build" ["with-profile" "+test" "do"
-      ;["check-deps"]
+      ["check-vers"]
       ["ubercompile"]
       ["lint"]
       ["ltest"]
