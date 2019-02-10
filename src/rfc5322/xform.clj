@@ -40,8 +40,8 @@
 
   Note that this is by no means definitive or complete!"
   [xs]
-  (log/tracef "Preparing to convert the following to a map:\n"
-              xs)
+  ; (log/trace "Preparing to convert the following to a map:\n"
+  ;            xs)
   (instaparse/transform
     {:LF str
      :line-feeds str

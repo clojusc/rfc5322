@@ -36,9 +36,8 @@
   and nil otherwise. Because RFC 5322 is ambiguous, the returned parse tree
   is the one with the least number of obsolete tokens."
   [message-text mode]
-  (log/debugf "Parsing message \n%s\nUsing %s mode ..."
-              message-text
-              mode)
+  (log/debugf "Parsing message using %s mode ..." mode)
+  (log/tracef "Parsing message:\n"  message-text)
   (let [result (instaparse/parse (make-parser mode) message-text)]
     (if (instaparse/failure? result)
       (throw (new ParserException "Parse failure" (instaparse/get-failure result)))
