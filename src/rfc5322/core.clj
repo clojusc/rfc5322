@@ -3,8 +3,7 @@
     [instaparse.core :as instaparse]
     [rfc5322.xform :as xform]
     [rfc5322.parser :as parser]
-    [taoensso.timbre :as log]
-    [trifl.java :refer [show-methods]]))
+    [taoensso.timbre :as log]))
 
 (defn log-and-passthrough
   [x level msg]
